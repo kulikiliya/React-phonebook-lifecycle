@@ -15,7 +15,7 @@ export class App extends React.Component {
     filter: '',
   };
 
-  // Добавить контакты
+  // Добавить контакты //
   handleAddContacts = (name, number, id) => {
     const item = { name, number, id };
 
