@@ -14,6 +14,22 @@ export class App extends React.Component {
     ],
     filter: '',
   };
+  //LocalStorage
+
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+
+    if (prevState.contacts.length !== contacts.length) {
+      window.localStorage.setItem('Contacts', JSON.stringify(contacts));
+    }
+  }
+
+  componentDidMount() {
+    const item = JSON.parse(window.localStorage.getItem('Contacts'));
+    if (item?.length) {
+      this.setState({ contacts: item });
+    }
+  }
 
   // Добавить контакты //
   handleAddContacts = (name, number, id) => {
