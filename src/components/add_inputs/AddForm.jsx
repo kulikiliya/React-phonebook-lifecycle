@@ -17,6 +17,8 @@ export class AddForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.addContacts(this.state.name, this.state.number, this.state.id);
+
+    this.setState({ name: '', number: '' });
   };
 
   render() {
@@ -26,6 +28,7 @@ export class AddForm extends Component {
           Name
           <Input
             onChange={this.handleInput}
+            value={this.state.name}
             type="text"
             name="name"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -36,6 +39,7 @@ export class AddForm extends Component {
           Phone
           <Input
             onChange={this.handleInput}
+            value={this.state.number}
             type="tel"
             name="number"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
